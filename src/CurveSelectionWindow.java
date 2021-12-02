@@ -130,15 +130,13 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 				curveInfo_textArea.append(input +" - "+ curveArray[input-1].toString() +"\n\n");
 				numInput_textField.setText(null);
 			}catch (Exception exception){
-				Sound errorSound = new Sound("crunch.wav");
-				errorSound.clip.start();
-				String message = "Enter a number between 1 and 5 !\nYou filth ! Don't you know how to read ?!";
-				JOptionPane.showMessageDialog(this,message);
+				playErrorSound();
+				showErrorWindow();
 				numInput_textField.setText(null);
 			}
 		}
 		if(e.getSource() == volume_button) {
-			if(volume_button.state){
+			if(volume_button.isPressed){
 				volume_button.setNotPressed();
 				music.clip.loop(Clip.LOOP_CONTINUOUSLY);
 			} else{
@@ -184,5 +182,15 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 			e.printStackTrace();
 			return new Font("Arial", Font.BOLD, size);
 		}
+	}
+
+	private void playErrorSound() {
+		Sound errorSound = new Sound("crunch.wav");
+		errorSound.clip.start();
+	}
+
+	private void showErrorWindow(){
+		String message = "Enter a number between 1 and 5 !\nYou filth ! Don't you know how to read ?!";
+		JOptionPane.showMessageDialog(this,message);
 	}
 }

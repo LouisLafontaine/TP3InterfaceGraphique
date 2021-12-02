@@ -12,9 +12,9 @@ public class FancyButton extends JButton {
     //==================================================================================================================
     // Attributes
     //==================================================================================================================
-    ImageIcon notPressed;
-    ImageIcon pressed;
-    boolean state; // true if pressed
+    ImageIcon notPressedIcon;
+    ImageIcon pressedIcon;
+    boolean isPressed; // true if pressed
     Sound sound;
     Boolean soundBothState;
 
@@ -22,9 +22,9 @@ public class FancyButton extends JButton {
     // Constructors
     //==================================================================================================================
     public FancyButton(String notPressedImgPath, String pressedImgPath, String soundPath, boolean soundBothState){
-        this.notPressed = new ImageIcon(Objects.requireNonNull(importImage(notPressedImgPath)));
-        this.pressed = new ImageIcon(Objects.requireNonNull(importImage(pressedImgPath)));
-        this.state = false;
+        this.notPressedIcon = new ImageIcon(Objects.requireNonNull(importImage(notPressedImgPath)));
+        this.pressedIcon = new ImageIcon(Objects.requireNonNull(importImage(pressedImgPath)));
+        this.isPressed = false;
         this.sound = new Sound(soundPath);
         this.soundBothState = soundBothState;
         setOpaque(false);
@@ -44,26 +44,26 @@ public class FancyButton extends JButton {
     }
 
     public void setBounds(int x, int y, double size){
-        super.setBounds(x,y,(int)(size*pressed.getIconWidth()), (int)(size*pressed.getIconHeight()));
+        super.setBounds(x,y,(int)(size* pressedIcon.getIconWidth()), (int)(size* pressedIcon.getIconHeight()));
         setImageSize();
-        setIcon(notPressed);
+        setIcon(notPressedIcon);
     }
 
     private void setImageSize(){
-        Image resizedPressed = pressed.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH);
-        Image resizedNotPressed = notPressed.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH);
-        pressed = new ImageIcon(resizedPressed);
-        notPressed = new ImageIcon(resizedNotPressed);
+        Image resizedPressed = pressedIcon.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH);
+        Image resizedNotPressed = notPressedIcon.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH);
+        pressedIcon = new ImageIcon(resizedPressed);
+        notPressedIcon = new ImageIcon(resizedNotPressed);
     }
 
     public void setPressed(){
-        setIcon(pressed);
-        state = true;
+        setIcon(pressedIcon);
+        isPressed = true;
         playSound();
     }
     public void setNotPressed(){
-        setIcon(notPressed);
-        state = false;
+        setIcon(notPressedIcon);
+        isPressed = false;
         if(soundBothState) playSound();
     }
 
