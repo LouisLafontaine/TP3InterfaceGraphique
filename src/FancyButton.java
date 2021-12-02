@@ -4,21 +4,36 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
 
+/*
+* Button with an press animation and a sound
+* */
+
 public class FancyButton extends JButton {
+    //==================================================================================================================
+    // Attributes
+    //==================================================================================================================
     ImageIcon notPressed;
     ImageIcon pressed;
     boolean state; // true if pressed
     Sound sound;
     Boolean soundBothState;
 
+    //==================================================================================================================
+    // Constructors
+    //==================================================================================================================
     public FancyButton(String notPressedImgPath, String pressedImgPath, String soundPath, boolean soundBothState){
         this.notPressed = new ImageIcon(Objects.requireNonNull(importImage(notPressedImgPath)));
         this.pressed = new ImageIcon(Objects.requireNonNull(importImage(pressedImgPath)));
         this.state = false;
         this.sound = new Sound(soundPath);
         this.soundBothState = soundBothState;
+        setOpaque(false);
+        setBorderPainted(false);
     }
 
+    //==================================================================================================================
+    // Methods
+    //==================================================================================================================
     private Image importImage(String imageName){
         try {
             return ImageIO.read(getClass().getResourceAsStream(imageName));

@@ -3,9 +3,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
+/*
+* Label with an image
+* the label keeps the proportions of the image
+* */
+
+
 public class ImageLabel extends JLabel{
+    //==================================================================================================================
+    // Attributes
+    //==================================================================================================================
     ImageIcon icon;
 
+    //==================================================================================================================
+    // Constructors
+    //==================================================================================================================
     public ImageLabel(String imageName){
         try {
            icon = new ImageIcon(ImageIO.read(getClass().getResourceAsStream(imageName)));
@@ -13,8 +25,12 @@ public class ImageLabel extends JLabel{
         } catch (IOException e) {
             e.printStackTrace();
         }
+        setOpaque(false);
     }
 
+    //==================================================================================================================
+    // Methods
+    //==================================================================================================================
     public void setBounds(int x, int y, int size){
         super.setBounds(x,y,size*icon.getIconWidth(), size*icon.getIconHeight());
         setImageSize();

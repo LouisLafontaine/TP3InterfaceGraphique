@@ -8,7 +8,7 @@ import java.awt.event.MouseListener;
 import java.io.InputStream;
 
 /**
- * La fenêtre principale pour sélectionner les courbes à étudier
+ * Main window is used to select curves to study
  */
  
 
@@ -41,12 +41,10 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		ImagePanel topPanel = new ImagePanel("topPanel.png");
 		topPanel.setLayout(null);
 		topPanel.setBounds(20,20,360,140);
-		topPanel.setOpaque(false);
 
 		// Label texte enter a number
 		enterNumber_Label = new ImageLabel("enterANumber.png");
 		enterNumber_Label.setBounds(20,20,2);
-		enterNumber_Label.setOpaque(false);
 		enterNumber_Label.addMouseListener(this);
 		topPanel.add(enterNumber_Label);
 
@@ -60,8 +58,6 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		// Button for volume on off
 		volume_button = new FancyButton("speakerOn.png", "speakerOff.png", "pressSound.wav", true);
 		volume_button.setBounds(25,65,1.5);
-		volume_button.setOpaque(false);
-		volume_button.setBorderPainted(false);
 		volume_button.addActionListener(this);
 		topPanel.add(volume_button);
 
@@ -71,14 +67,11 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		ImagePanel bottomPanel = new ImagePanel("bottomPanel.png");
 		bottomPanel.setLayout(null);
 		bottomPanel.setBounds(20, 180, 360, 390);
-		bottomPanel.setOpaque(false);
 
 		// display button
 		//--------------------------------------------------------------------------------------------------------------
 		display_button = new FancyButton("displayButton.png", "displayButtonPressed.png", "pressSound.wav", false);
 		display_button.setBounds(30, 10, 3);
-		display_button.setBorderPainted(false);
-		display_button.setOpaque(false);
 		display_button.addActionListener(this);
 		display_button.addMouseListener(this);
 		bottomPanel.add(display_button);
@@ -86,8 +79,6 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		// Erase button
 		erase_button = new FancyButton("eraseButton.png", "eraseButtonPressed.png", "crunch.wav", false);
 		erase_button.setBounds(210,10,3);
-		erase_button.setBorderPainted(false);
-		erase_button.setOpaque(false);
 		erase_button.addActionListener(this);
 		erase_button.addMouseListener(this);
 		bottomPanel.add(erase_button);
@@ -108,7 +99,6 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		//--------------------------------------------------------------------------------------------------------------
 		ImagePanel mainPanel = new ImagePanel("grass.png");
 		mainPanel.setLayout(null);
-		mainPanel.setOpaque(false);
 		mainPanel.add(topPanel);
 		mainPanel.add(bottomPanel);
 
