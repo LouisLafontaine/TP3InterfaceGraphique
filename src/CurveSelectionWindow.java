@@ -70,7 +70,7 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		//--------------------------------------------------------------------------------------------------------------
 		ImagePanel bottomPanel = new ImagePanel("bottomPanel.png");
 		bottomPanel.setLayout(null);
-		bottomPanel.setBounds(20, 180, 360, 380);
+		bottomPanel.setBounds(20, 180, 360, 390);
 		bottomPanel.setOpaque(false);
 
 		// display button
@@ -100,7 +100,7 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 
 		// Information scroll pane
 		JScrollPane curveInfo_scrollPane = new JScrollPane(curveInfo_textArea);
-		curveInfo_scrollPane.setBounds(10,90,340,280);
+		curveInfo_scrollPane.setBounds(20,90,320,280);
 		bottomPanel.add(curveInfo_scrollPane);
 
 		//--------------------------------------------------------------------------------------------------------------
