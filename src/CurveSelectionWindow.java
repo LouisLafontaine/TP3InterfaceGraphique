@@ -24,6 +24,7 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 	JTextArea curveInfo_textArea;
 	ImageLabel enterNumber_Label;
 	Sound music;
+	CurvePlotWindow curvePlotWindow;
 
 	//==================================================================================================================
 	// Constructors
@@ -34,6 +35,8 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		this.curveArray = aCurveArray;
 		this.music = new Sound("pokemon.wav");
 		music.clip.loop(Clip.LOOP_CONTINUOUSLY);
+
+		curvePlotWindow = new CurvePlotWindow();
 
 		//--------------------------------------------------------------------------------------------------------------
 		// Top panel
@@ -114,13 +117,6 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 	}
 
 	//==================================================================================================================
-	// Drawing
-	//==================================================================================================================
-	public void paint(Graphics g){
-		super.paint(g);
-	}
-
-	//==================================================================================================================
 	// Interaction
 	//==================================================================================================================
 	public void actionPerformed(ActionEvent e) {
@@ -129,6 +125,9 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 				int input = Integer.parseInt(numInput_textField.getText());
 				curveInfo_textArea.append(input +" - "+ curveArray[input-1].toString() +"\n\n");
 				numInput_textField.setText(null);
+				if(!curvePlotWindow.isVisible()) {
+					curvePlotWindow.setVisible(true);
+				}
 			}catch (Exception exception){
 				playErrorSound();
 				showErrorWindow();
