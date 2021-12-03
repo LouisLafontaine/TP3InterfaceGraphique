@@ -9,7 +9,7 @@ public class CurvePlotWindow extends JFrame {
 
     public CurvePlotWindow(){
 
-        background = importImage("classicBackground.png");
+        background = importImage("Backgrounds/classicBackground.png");
 
         // Main panel
         JPanel mainPanel = new JPanel();

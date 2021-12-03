@@ -33,7 +33,7 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		super("GUI Curves");
 
 		this.curveArray = aCurveArray;
-		this.music = new Sound("pokemon.wav");
+		this.music = new Sound("Sounds/pokemon.wav");
 		music.clip.loop(Clip.LOOP_CONTINUOUSLY);
 
 		curvePlotWindow = new CurvePlotWindow();
@@ -41,12 +41,12 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		//--------------------------------------------------------------------------------------------------------------
 		// Top panel
 		//--------------------------------------------------------------------------------------------------------------
-		ImagePanel topPanel = new ImagePanel("topPanel.png");
+		ImagePanel topPanel = new ImagePanel("PanelBackgrounds/topPanel.png");
 		topPanel.setLayout(null);
 		topPanel.setBounds(20,20,360,140);
 
 		// Label texte enter a number
-		enterNumber_Label = new ImageLabel("enterANumber.png");
+		enterNumber_Label = new ImageLabel("LabelBackgounds/enterANumber.png");
 		enterNumber_Label.setBounds(20,20,2);
 		enterNumber_Label.addMouseListener(this);
 		topPanel.add(enterNumber_Label);
@@ -54,12 +54,12 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		// Text area to input curve number
 		numInput_textField = new JTextField("");
 		numInput_textField.setBounds(160,70,40,40);
-		numInput_textField.setFont(importFont("pixelFont.ttf",35));
+		numInput_textField.setFont(importFont("Fonts/pixelFont.ttf",35));
 		numInput_textField.setHorizontalAlignment(JTextField.CENTER);
 		topPanel.add(numInput_textField);
 
 		// Button for volume on off
-		volume_button = new FancyButton("speakerOn.png", "speakerOff.png", "pressSound.wav", true);
+		volume_button = new FancyButton("Buttons/speakerOn.png", "Buttons/speakerOff.png", "Sounds/pressSound.wav", true);
 		volume_button.setBounds(25,65,1.5);
 		volume_button.addActionListener(this);
 		topPanel.add(volume_button);
@@ -67,20 +67,20 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		//--------------------------------------------------------------------------------------------------------------
 		// Bottom panel
 		//--------------------------------------------------------------------------------------------------------------
-		ImagePanel bottomPanel = new ImagePanel("bottomPanel.png");
+		ImagePanel bottomPanel = new ImagePanel("PanelBackgrounds/bottomPanel.png");
 		bottomPanel.setLayout(null);
 		bottomPanel.setBounds(20, 180, 360, 390);
 
 		// display button
 		//--------------------------------------------------------------------------------------------------------------
-		display_button = new FancyButton("displayButton.png", "displayButtonPressed.png", "pressSound.wav", false);
+		display_button = new FancyButton("Buttons/displayButton.png", "Buttons/displayButtonPressed.png", "Sounds/pressSound.wav", false);
 		display_button.setBounds(30, 10, 3);
 		display_button.addActionListener(this);
 		display_button.addMouseListener(this);
 		bottomPanel.add(display_button);
 
 		// Erase button
-		erase_button = new FancyButton("eraseButton.png", "eraseButtonPressed.png", "crunch.wav", false);
+		erase_button = new FancyButton("Buttons/eraseButton.png", "Buttons/eraseButtonPressed.png", "Sounds/crunch.wav", false);
 		erase_button.setBounds(210,10,3);
 		erase_button.addActionListener(this);
 		erase_button.addMouseListener(this);
@@ -90,7 +90,7 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		// Information text area
 		curveInfo_textArea = new JTextArea("");
 		curveInfo_textArea.setLineWrap(true);
-		curveInfo_textArea.setFont(importFont("pixelFont.ttf",15));
+		curveInfo_textArea.setFont(importFont("Fonts/pixelFont.ttf",15));
 
 		// Information scroll pane
 		JScrollPane curveInfo_scrollPane = new JScrollPane(curveInfo_textArea);
@@ -100,7 +100,7 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		//--------------------------------------------------------------------------------------------------------------
 		// Main Panel
 		//--------------------------------------------------------------------------------------------------------------
-		ImagePanel mainPanel = new ImagePanel("grass.png");
+		ImagePanel mainPanel = new ImagePanel("Backgrounds/grass.png");
 		mainPanel.setLayout(null);
 		mainPanel.add(topPanel);
 		mainPanel.add(bottomPanel);
@@ -184,7 +184,7 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 	}
 
 	private void playErrorSound() {
-		Sound errorSound = new Sound("crunch.wav");
+		Sound errorSound = new Sound("Sounds/crunch.wav");
 		errorSound.clip.start();
 	}
 
