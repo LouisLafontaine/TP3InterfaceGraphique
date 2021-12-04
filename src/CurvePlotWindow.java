@@ -23,7 +23,6 @@ public class CurvePlotWindow extends JFrame {
     }
 
     public void paint(Graphics g){
-        super.paint(g);
         g.drawImage(background,0,0,getWidth(), getHeight(),null );
         g.setColor(Color.black);
         g.fillRect(0,0,200,200);
