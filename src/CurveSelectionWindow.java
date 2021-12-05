@@ -190,7 +190,14 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 	}
 
 	private void showErrorWindow(){
-		String message = "Enter a number between 1 and 5 !\nYou filth ! Don't you know how to read ?!";
+		String message = """
+				Enter a number between 1 and 5 !
+				You filth ! Don't you know how to read ?!
+
+				Oh you didn't mean to do it...my bad...Sorry for being a bit aggressive
+				I couldn't take my cup of coffee this morning so I am a bit on edge.
+				You know what, I will forgive you, so just click OK and get on with it.
+				But don't I ever see you make this mistake again... !""";
 		JOptionPane.showMessageDialog(this,message);
 	}
 }
