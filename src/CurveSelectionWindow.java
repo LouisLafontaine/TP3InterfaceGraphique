@@ -112,6 +112,7 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		setLocation(300, 200);
 		setSize(400, 610);
 		setResizable(false);
+		setAlwaysOnTop(true);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
