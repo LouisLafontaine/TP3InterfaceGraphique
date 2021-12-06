@@ -46,7 +46,7 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		topPanel.setBounds(20,20,360,140);
 
 		// Label texte enter a number
-		enterNumber_Label = new ImageLabel("LabelBackgounds/enterANumber.png");
+		enterNumber_Label = new ImageLabel("LabelBackgrounds/enterANumber.png");
 		enterNumber_Label.setBounds(20,20,2);
 		enterNumber_Label.addMouseListener(this);
 		topPanel.add(enterNumber_Label);
