@@ -17,6 +17,8 @@ public class CurvePlotWindow extends JFrame implements ActionListener {
         curvePlotPanel = new CurvePlotPanel();
         add(curvePlotPanel);
 
+
+
         // Window
         setLocation(750,200);
         setSize(1000, 610);

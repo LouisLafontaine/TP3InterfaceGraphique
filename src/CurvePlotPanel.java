@@ -3,13 +3,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class CurvePlotPanel extends JPanel implements ActionListener {
+public class CurvePlotPanel extends JPanel implements ActionListener, KeyListener {
 
     private final BufferedImage background;
-    private int bckgrdx = 0;
+    private int bckgrdx = 1;
     private Curve curve;
     Timer timer;
 
@@ -17,12 +19,14 @@ public class CurvePlotPanel extends JPanel implements ActionListener {
         timer = new Timer(41,this);
         timer.start();
         background = (BufferedImage) importImage("Backgrounds/classicBackground.png");
+        setFocusable(true);
+        addKeyListener(this);
     }
 
     public void actionPerformed(ActionEvent e) {
         if(curve!=null){
             curve.displaceY(5);
-            bckgrdx += 5;
+//            bckgrdx += 5;
             repaint();
         }
     }
@@ -56,5 +60,22 @@ public class CurvePlotPanel extends JPanel implements ActionListener {
     public void setCurveNull(){
         curve = null;
         repaint();
+    }
+
+
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            bckgrdx += 1;
+            repaint();
+        }
+
+    }
+
+    public void keyReleased(KeyEvent e) {
+
     }
 }
