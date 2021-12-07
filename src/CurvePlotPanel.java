@@ -32,4 +32,9 @@ public class CurvePlotPanel extends JPanel {
         this.curve = c;
         repaint();
     }
+
+    public void setCurveNull(){
+        curve = null;
+        repaint();
+    }
 }

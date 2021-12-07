@@ -148,6 +148,7 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		if(e.getSource() == erase_button){
 			curveInfo_textArea.setText(null);
 			numInput_textField.setText(null);
+			curvePlotWindow.curvePlotPanel.setCurveNull();
 		}
 	}
 
