@@ -112,5 +112,12 @@ public class Polygon extends Curve {
 		g.fillPolygon(xPoints,yPoints,vertices.length);
 	}
 
+	@Override
+	public void displaceY(int dy) {
+		for(Point v : vertices){
+			v.y += dy;
+		}
+	}
+
 }
 

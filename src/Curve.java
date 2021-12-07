@@ -51,5 +51,7 @@ public abstract class Curve{
 	public abstract Point barycenter();
 
 	public abstract void draw(Graphics g);
+
+	public abstract void displaceY(int dy);
 }
 

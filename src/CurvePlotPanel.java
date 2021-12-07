@@ -1,15 +1,28 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class CurvePlotPanel extends JPanel {
+public class CurvePlotPanel extends JPanel implements ActionListener {
 
     private final Image background;
     private Curve curve;
+    Timer timer;
+    private int dy; // Y displacement of a curve
 
     public CurvePlotPanel(){
+        timer = new Timer(41,this);
+        timer.start();
         background = importImage("Backgrounds/classicBackground.png");
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if(curve!=null){
+            curve.displaceY(5);
+            repaint();
+        }
     }
 
     public void paintComponent(Graphics g){

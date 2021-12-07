@@ -1,10 +1,17 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class CurvePlotWindow extends JFrame {
+public class CurvePlotWindow extends JFrame implements ActionListener {
 
     CurvePlotPanel curvePlotPanel;
+    Timer timer;
+    int elapsedTime = 0;
 
     public CurvePlotWindow(){
+
+        timer = new Timer(1000,this);
+        timer.start();
 
         // Main panel
         curvePlotPanel = new CurvePlotPanel();
@@ -15,5 +22,12 @@ public class CurvePlotWindow extends JFrame {
         setSize(1000, 610);
         setAlwaysOnTop(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == timer){
+            elapsedTime ++;
+            setTitle("Time elapsed since start : " + elapsedTime + " seconds");
+        }
     }
 }

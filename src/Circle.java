@@ -77,6 +77,11 @@ public class Circle extends Curve {
     	g.setColor(this.color);
     	g.fillOval((int)center.x, (int)center.y, this.radius, this.radius);
 	}
+
+	@Override
+	public void displaceY(int dy) {
+		this.center.y += dy;
+	}
 }
 
 
