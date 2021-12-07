@@ -6,6 +6,7 @@ import java.io.IOException;
 public class CurvePlotPanel extends JPanel {
 
     private final Image background;
+    private Curve curve;
 
     public CurvePlotPanel(){
         background = importImage("Backgrounds/classicBackground.png");
@@ -13,6 +14,9 @@ public class CurvePlotPanel extends JPanel {
 
     public void paintComponent(Graphics g){
         g.drawImage(background,0,0,getWidth(), getHeight(),null );
+        if(curve!=null){
+            curve.draw(g);
+        }
     }
 
     private Image importImage(String imagePath) {
@@ -22,5 +26,10 @@ public class CurvePlotPanel extends JPanel {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public void selectCurve(Curve c){
+        this.curve = c;
+        repaint();
     }
 }

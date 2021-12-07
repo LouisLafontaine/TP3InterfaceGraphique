@@ -9,6 +9,7 @@
  */
  
 import java.awt.Color;
+import java.awt.Graphics;
 
 public class Polygon extends Curve {
 	
@@ -85,7 +86,7 @@ public class Polygon extends Curve {
 		res.y /= 6*a;
 		return res;
   }
-  
+
 
 	/**
 	 * Pour afficher les données du polygone
@@ -98,6 +99,17 @@ public class Polygon extends Curve {
 		res.append(". ");
 		res.append(super.toString());
 		return res.toString();
+	}
+
+	public void draw(Graphics g){
+		g.setColor(this.color);
+		int[] xPoints = new int[vertices.length];
+		int[] yPoints = new int[vertices.length];
+		for(int i=0; i<vertices.length; i++) {
+			xPoints[i] = (int) vertices[i].x;
+			yPoints[i] = (int) vertices[i].y;
+		}
+		g.fillPolygon(xPoints,yPoints,vertices.length);
 	}
 
 }

@@ -1,29 +1,30 @@
-/**
- * Classe cercle pour définir un cercle
- * 	calcul du périmètre
- * 	calcul de l'aire
- * 	calcul du centre
- * 	gestion de la couleur
- * 	méthode toString
- * 
+/*
+  Classe cercle pour définir un cercle
+  	calcul du périmètre
+  	calcul de l'aire
+  	calcul du centre
+  	gestion de la couleur
+  	méthode toString
+
  */
  
 import java.awt.Color;
+import java.awt.Graphics;
 
 public class Circle extends Curve {
 
 	// Les attributs
-	private Point centre;
-	private int rayon;
+	private final Point center;
+	private final int radius;
 	
 	/**
 	 * Le constructeur
-	 * @param le centre et le rayon
+	 * @param c centre et le rayon
 	 */ 
 	public Circle(Point c, int r){
 		super(); // Ici super() est facultatif car java ajoute cette instruction automatiquement
-		centre = new Point(c.x,c.y);
-		rayon = r;
+		center = new Point(c.x,c.y);
+		radius = r;
 	}
 
 	/**
@@ -32,8 +33,8 @@ public class Circle extends Curve {
 	 */ 
 	public Circle(Point c, int r, Color uneCouleur){
 		super(uneCouleur);
-		centre = new Point(c.x,c.y);
-		rayon = r;   
+		center = new Point(c.x,c.y);
+		radius = r;
 	}
 	
 	/** 
@@ -41,7 +42,7 @@ public class Circle extends Curve {
 	 * @return le périmètre
 	 */
 	public double perimeter(){
-		return 2.0*Math.PI*rayon;
+		return 2.0*Math.PI* radius;
 	}
 	
 	/**
@@ -49,7 +50,7 @@ public class Circle extends Curve {
 	 * @return l'area
 	 */ 
 	public double area(){
-		return Math.PI*rayon*rayon;
+		return Math.PI* radius * radius;
 	}
 	
 	/**
@@ -57,7 +58,7 @@ public class Circle extends Curve {
 	 * @return le centre du cercle
 	 */ 
 	public Point barycenter(){
-		return centre;
+		return center;
 	}
   
 
@@ -67,9 +68,14 @@ public class Circle extends Curve {
 	 */
     public String toString(){
 		String res;
-		res=("Cercle de centre ("+centre.x+","+centre.y+") et de rayon "+rayon+". ");
+		res=("Cercle de centre ("+ center.x+","+ center.y+") et de rayon "+ radius +". ");
 		res+=super.toString();
 		return res;
+	}
+
+	public void draw(Graphics g){
+    	g.setColor(this.color);
+    	g.fillOval((int)center.x, (int)center.y, this.radius, this.radius);
 	}
 }
 

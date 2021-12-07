@@ -126,6 +126,7 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 				int input = Integer.parseInt(numInput_textField.getText());
 				curveInfo_textArea.append(input +" - "+ curveArray[input-1].toString() +"\n\n");
 				numInput_textField.setText(null);
+				curvePlotWindow.curvePlotPanel.selectCurve(curveArray[input-1]);
 				if(!curvePlotWindow.isVisible()) {
 					curvePlotWindow.setVisible(true);
 				}

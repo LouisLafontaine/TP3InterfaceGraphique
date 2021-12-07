@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Graphics;
 
 public abstract class Curve{
 
@@ -48,5 +49,7 @@ public abstract class Curve{
 	 * @return le barycentre
 	 */
 	public abstract Point barycenter();
+
+	public abstract void draw(Graphics g);
 }
 
