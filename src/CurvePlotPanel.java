@@ -10,7 +10,6 @@ public class CurvePlotPanel extends JPanel implements ActionListener {
     private final Image background;
     private Curve curve;
     Timer timer;
-    private int dy; // Y displacement of a curve
 
     public CurvePlotPanel(){
         timer = new Timer(41,this);
@@ -43,7 +42,6 @@ public class CurvePlotPanel extends JPanel implements ActionListener {
 
     public void selectCurve(Curve c){
         this.curve = c;
-        this.dy = 0;
         repaint();
     }
 
