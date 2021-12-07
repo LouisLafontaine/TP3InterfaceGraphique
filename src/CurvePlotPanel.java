@@ -43,6 +43,7 @@ public class CurvePlotPanel extends JPanel implements ActionListener {
 
     public void selectCurve(Curve c){
         this.curve = c;
+        this.dy = 0;
         repaint();
     }
 

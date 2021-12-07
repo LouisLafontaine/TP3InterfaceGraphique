@@ -1,18 +1,16 @@
 import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.io.InputStream;
+
 
 /**
  * Main window is used to select curves to study
  */
  
 
-public class CurveSelectionWindow extends JFrame implements ActionListener, MouseListener {
+public class CurveSelectionWindow extends JFrame implements ActionListener, MouseListener, KeyListener {
 	//==================================================================================================================
 	// Attributes
 	//==================================================================================================================
@@ -56,6 +54,7 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		numInput_textField.setBounds(160,70,40,40);
 		numInput_textField.setFont(importFont("Fonts/pixelFont.ttf",35));
 		numInput_textField.setHorizontalAlignment(JTextField.CENTER);
+		numInput_textField.addKeyListener(this);
 		topPanel.add(numInput_textField);
 
 		// Button for volume on off
@@ -123,13 +122,7 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == display_button){
 			try{
-				int input = Integer.parseInt(numInput_textField.getText());
-				curveInfo_textArea.append(input +" - "+ curveArray[input-1].toString() +"\n\n");
-				numInput_textField.setText(null);
-				curvePlotWindow.curvePlotPanel.selectCurve(curveArray[input-1]);
-				if(!curvePlotWindow.isVisible()) {
-					curvePlotWindow.setVisible(true);
-				}
+				display_buttonActions();
 			}catch (Exception exception){
 				playErrorSound();
 				showErrorWindow();
@@ -171,6 +164,17 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 	}
 
 	//==================================================================================================================
+	// Keyboard interface
+	//==================================================================================================================
+	public void keyTyped(KeyEvent e) { }
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			display_buttonActions();
+		}
+	}
+	public void keyReleased(KeyEvent e) { }
+
+	//==================================================================================================================
 	// Methods
 	//==================================================================================================================
 	private Font importFont(String filename, int size) {
@@ -201,5 +205,15 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 				You know what, I will forgive you, so just click OK and get on with it.
 				But don't I ever see you make this mistake again... !""";
 		JOptionPane.showMessageDialog(this,message);
+	}
+
+	private void display_buttonActions() {
+		int input = Integer.parseInt(numInput_textField.getText());
+		curveInfo_textArea.append(input +" - "+ curveArray[input-1].toString() +"\n\n");
+		numInput_textField.setText(null);
+		curvePlotWindow.curvePlotPanel.selectCurve(curveArray[input-1]);
+		if(!curvePlotWindow.isVisible()) {
+			curvePlotWindow.setVisible(true);
+		}
 	}
 }
