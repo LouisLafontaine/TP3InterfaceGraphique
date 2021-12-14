@@ -29,7 +29,7 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
 
     public void actionPerformed(ActionEvent e) {
         if(curve!=null){
-            curve.displaceY(5);
+            curve.displaceY(2);
             repaint();
         }
     }
@@ -57,6 +57,7 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
 
     public void selectCurve(Curve c){
         this.curve = c;
+        c.reset();
         repaint();
     }
 
@@ -76,6 +77,9 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
             repaint();
         }
 
+        if(e.getKeyCode() == KeyEvent.VK_B) curve.color = Color.blue;
+        if(e.getKeyCode() == KeyEvent.VK_R) curve.color = Color.red;
+
     }
 
     public void keyReleased(KeyEvent e) {
@@ -88,9 +92,12 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
     public void mouseClicked(MouseEvent e) {
     }
     public void mousePressed(MouseEvent e) {
-        System.out.println(e.getX()+" "+ e.getY());
         lastClickX = e.getX();
         lastClickY = e.getY();
+        curve.color = Color.red;
+
+        curve.displaceY(lastClickY - (int)(curve.barycenter().y));
+
     }
     public void mouseReleased(MouseEvent e) {
     }
@@ -98,6 +105,7 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
     }
     public void mouseExited(MouseEvent e) {
     }
+
 
     // Getters
 

@@ -14,6 +14,7 @@ import java.awt.Graphics;
 public class Circle extends Curve {
 
 	// Les attributs
+	private final Point iniCenter;
 	private final Point center;
 	private final int radius;
 	
@@ -23,6 +24,7 @@ public class Circle extends Curve {
 	 */ 
 	public Circle(Point c, int r){
 		super(); // Ici super() est facultatif car java ajoute cette instruction automatiquement
+		iniCenter =  new Point(c.x,c.y);
 		center = new Point(c.x,c.y);
 		radius = r;
 	}
@@ -33,6 +35,7 @@ public class Circle extends Curve {
 	 */ 
 	public Circle(Point c, int r, Color uneCouleur){
 		super(uneCouleur);
+		iniCenter = new Point(c.x, c.y);
 		center = new Point(c.x,c.y);
 		radius = r;
 	}
@@ -78,9 +81,13 @@ public class Circle extends Curve {
     	g.fillOval((int)center.x, (int)center.y, this.radius, this.radius);
 	}
 
-	@Override
 	public void displaceY(int dy) {
 		this.center.y += dy;
+	}
+
+	public void reset(){
+    	center.x = iniCenter.x;
+    	center.y = iniCenter.y;
 	}
 }
 

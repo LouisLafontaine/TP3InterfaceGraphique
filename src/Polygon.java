@@ -13,7 +13,8 @@ import java.awt.Graphics;
 
 public class Polygon extends Curve {
 	
-	// Les attributs	
+	// Les attributs
+	private final Point[] iniVertices;
 	private final Point[] vertices;
 
 	/**
@@ -22,9 +23,12 @@ public class Polygon extends Curve {
 	 */ 
 	public Polygon(Point[] p){
 		super(); // Ici super() est facultatif car java ajoute cette instruction automatiquement
+		iniVertices = new Point[p.length];
 		vertices = new Point[p.length];
-		for(int i=0; i<p.length; i++)
+		for(int i=0; i<p.length; i++) {
+			iniVertices[i] = new Point(p[i].x,p[i].y);
 			vertices[i] = new Point(p[i].x,p[i].y);
+		}
 	}
 	
 	/**
@@ -34,9 +38,12 @@ public class Polygon extends Curve {
 	public Polygon(Point[] p, Color uneCouleur){
 		// Pour appeler le constructeur de l'ancêtre et affecter au polygone la couleur par défaut
        super(uneCouleur);
+		iniVertices = new Point[p.length];
 		vertices = new Point[p.length];
-		for(int i=0; i<p.length; i++)
+		for(int i=0; i<p.length; i++) {
+			iniVertices[i] = new Point(p[i].x,p[i].y);
 			vertices[i] = new Point(p[i].x,p[i].y);
+		}
 	}
 	
 	/**
@@ -54,7 +61,7 @@ public class Polygon extends Curve {
 	}
 	
 	/**
-	 * Pour calculer l'area d'un polygone
+	 * Pour calculer l'aire d'un polygone
 	 * @return l'area
 	 */ 
 	public double area(){
@@ -117,6 +124,10 @@ public class Polygon extends Curve {
 		for(Point v : vertices){
 			v.y += dy;
 		}
+	}
+
+	public void reset(){
+		System.arraycopy(iniVertices, 0, vertices, 0, iniVertices.length);
 	}
 
 }

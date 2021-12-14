@@ -31,7 +31,7 @@ public class CurvePlotWindow extends JFrame implements ActionListener {
             elapsedTime ++;
             int x = curvePlotPanel.getLastClickX();
             int y = curvePlotPanel.getLastClickY();
-            setTitle("Time elapsed since start : " + elapsedTime + " seconds - last click : ("+ x +", "+ y+ ")");
+            setTitle("Time elapsed since start : " + elapsedTime + " seconds - last click : "+ x +", "+ y);
         }
     }
 }
