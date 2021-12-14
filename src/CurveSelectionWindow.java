@@ -31,10 +31,12 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		super("GUI Curves");
 
 		this.curveArray = aCurveArray;
-		this.music = new Sound("Sounds/pokemon.wav");
-		music.clip.loop(Clip.LOOP_CONTINUOUSLY);
 
 		curvePlotWindow = new CurvePlotWindow();
+
+		// Music
+		this.music = new Sound("Sounds/pokemon.wav");
+		music.clip.loop(Clip.LOOP_CONTINUOUSLY);
 
 		//--------------------------------------------------------------------------------------------------------------
 		// Top panel

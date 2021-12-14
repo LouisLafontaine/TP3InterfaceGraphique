@@ -4,8 +4,9 @@ import java.awt.Graphics;
 public abstract class Curve{
 
 	// Attribut
+	protected Color iniColor;
 	protected Color color;
-	private final Color DEFAULT_COLOR = Color.black;
+	protected final Color DEFAULT_COLOR = Color.black;
 
 
 	/**
@@ -13,6 +14,7 @@ public abstract class Curve{
      */
     public Curve(){
 		// La couleur par défaut est défini comme une constante
+		iniColor = DEFAULT_COLOR;
 		color = DEFAULT_COLOR;
     }
     
@@ -21,7 +23,8 @@ public abstract class Curve{
      * @param aColor couleur de la courbe
      */ 
     public Curve(Color aColor){
-        color = aColor;
+        iniColor = aColor;
+    	color = aColor;
     }
 	
 	/**

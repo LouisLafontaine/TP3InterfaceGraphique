@@ -78,7 +78,7 @@ public class Circle extends Curve {
 
 	public void draw(Graphics g){
     	g.setColor(this.color);
-    	g.fillOval((int)center.x, (int)center.y, this.radius, this.radius);
+    	g.fillOval((int)center.x-radius, (int)center.y-radius, 2*this.radius, 2*this.radius);
 	}
 
 	public void move(int dx, int dy) {
