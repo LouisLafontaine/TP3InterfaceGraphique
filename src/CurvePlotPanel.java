@@ -104,7 +104,7 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
     public int getLastClickX(){
         return lastClickX;
     }
-    public int getlLastClickY(){
+    public int getLastClickY(){
         return lastClickY;
     }
 }
