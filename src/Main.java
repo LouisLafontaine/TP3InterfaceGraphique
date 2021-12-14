@@ -14,8 +14,8 @@ public class Main {
 		Curve[] curveArray =new Curve[5];
 		
 		// création de 3 cercles
-		Curve c1 = new Circle(new Point(100,100), 50);
-		Curve c2 = new Circle(new Point(300,300), 80);
+		Curve c1 = new Circle(new Point(100,100), 50, Color.yellow);
+		Curve c2 = new Circle(new Point(300,300), 80, Color.green);
 		Curve c3 = new Circle(new Point(200,150), 30, Color.blue);
 		
 		// Création de 2 polygones

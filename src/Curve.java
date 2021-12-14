@@ -58,5 +58,7 @@ public abstract class Curve{
 	public abstract void move(int dx, int dy);
 
 	public abstract void reset();
+
+	public abstract boolean isTouching(Point p);
 }
 

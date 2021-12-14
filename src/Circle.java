@@ -90,6 +90,10 @@ public class Circle extends Curve {
     	center.x = iniCenter.x;
     	center.y = iniCenter.y;
 	}
+
+	public boolean isTouching(Point p){
+    	return (center.distance(p) < radius);
+	}
 }
 
 

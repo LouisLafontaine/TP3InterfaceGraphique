@@ -16,6 +16,7 @@ public class Polygon extends Curve {
 	// Les attributs
 	private final Point[] iniVertices;
 	private final Point[] vertices;
+	private final double minDistance;
 
 	/**
 	 * Le constructeur
@@ -29,6 +30,20 @@ public class Polygon extends Curve {
 			iniVertices[i] = new Point(p[i].x,p[i].y);
 			vertices[i] = new Point(p[i].x,p[i].y);
 		}
+
+		// Find the shortest distance between the barycenter and one the vertices
+		double minD = 0;
+		Point barycenter = barycenter();
+		Point previousPoint = vertices[0];
+		for(Point point : vertices){
+			double distanceCurrentPoint = barycenter.distance(point);
+			double distancePreviousPoint = barycenter.distance(previousPoint);
+			if( distanceCurrentPoint<distancePreviousPoint){
+				minD = distanceCurrentPoint;
+			}
+			previousPoint = point;
+		}
+		minDistance = minD;
 	}
 	
 	/**
@@ -44,6 +59,20 @@ public class Polygon extends Curve {
 			iniVertices[i] = new Point(p[i].x,p[i].y);
 			vertices[i] = new Point(p[i].x,p[i].y);
 		}
+
+		// Find the shortest distance between the barycenter and one the vertices
+		double minD = 0;
+		Point barycenter = barycenter();
+		Point previousPoint = vertices[0];
+		for(Point point : vertices){
+			double distanceCurrentPoint = barycenter.distance(point);
+			double distancePreviousPoint = barycenter.distance(previousPoint);
+			if( distanceCurrentPoint<distancePreviousPoint){
+				minD = distanceCurrentPoint;
+			}
+			previousPoint = point;
+		}
+		minDistance = minD;
 	}
 	
 	/**
@@ -129,6 +158,15 @@ public class Polygon extends Curve {
 
 	public void reset(){
 		System.arraycopy(iniVertices, 0, vertices, 0, iniVertices.length);
+	}
+
+	// touching the circle with a radius : barycenter to closest vertex
+	public boolean isTouching(Point p){
+		boolean isTouching = false;
+		if (barycenter().distance(p)< minDistance) {
+			isTouching = true;
+		}
+		return isTouching;
 	}
 
 }

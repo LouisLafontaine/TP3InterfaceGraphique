@@ -12,9 +12,8 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
     private final BufferedImage background;
     private int bckgrdx = 1;
     private Curve curve;
-    private final Point lastClick;
-    private final Point currClick;
-    private boolean clicking;
+    private final Point click;
+    private boolean clickedOnCurve;
     Timer timer;
 
     //==================================================================================================================
@@ -24,9 +23,8 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
         timer = new Timer(41,this);
         timer.start();
 
-        currClick = new Point(0,0);
-        lastClick = new Point(0,0);
-        clicking = false;
+        click = new Point(0,0);
+        clickedOnCurve = false;
 
         background = (BufferedImage) importImage("Backgrounds/classicBackground.png");
 
@@ -40,7 +38,7 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
     // Interaction
     //==================================================================================================================
     public void actionPerformed(ActionEvent e) {
-        if(curve!=null && !clicking){
+        if(curve!=null && !clickedOnCurve){
             curve.move(0,2);
         }
         repaint();
@@ -85,15 +83,17 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
     public void mouseClicked(MouseEvent e) {
     }
     public void mousePressed(MouseEvent e) {
-        clicking = true;
-        lastClick.x = e.getX();
-        lastClick.y = e.getY();
-        curve.color = Color.red;
+        click.x = e.getX();
+        click.y = e.getY();
 
-        moveCurveToClick(lastClick.x, lastClick.y);
+        if(curve.isTouching(click)){
+            clickedOnCurve = true;
+            curve.color = Color.red;
+            moveCurveToClick(click);
+        }
     }
     public void mouseReleased(MouseEvent e) {
-        clicking = false;
+        clickedOnCurve = false;
         curve.color = curve.iniColor;
     }
     public void mouseEntered(MouseEvent e) {
@@ -105,10 +105,12 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
     // Mouse Motion Listener
     //--------------------------------------------------------------------------------------------------------------
     public void mouseDragged(MouseEvent e) {
-        currClick.x = e.getX();
-        currClick.y = e.getY();
+        click.x = e.getX();
+        click.y = e.getY();
 
-       moveCurveToClick(currClick.x, currClick.y);
+        if(clickedOnCurve){
+            moveCurveToClick(click);
+        }
     }
     public void mouseMoved(MouseEvent e) {
     }
@@ -136,19 +138,18 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
         repaint();
     }
 
-    private void moveCurveToClick(double x, double y){
-        int dx = (int)(x - curve.barycenter().x);
-        int dy = (int)(y - curve.barycenter().y);
+    private void moveCurveToClick(Point p){
+        int dx = (int)(p.x - curve.barycenter().x);
+        int dy = (int)(p.y - curve.barycenter().y);
         curve.move(dx,dy);
     }
 
 
     // Getters
-
     public int getLastClickX(){
-        return (int)lastClick.x;
+        return (int) click.x;
     }
     public int getLastClickY(){
-        return (int)lastClick.y;
+        return (int) click.y;
     }
 }
