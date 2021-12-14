@@ -120,8 +120,9 @@ public class Polygon extends Curve {
 	}
 
 	@Override
-	public void displaceY(int dy) {
+	public void move(int dx, int dy) {
 		for(Point v : vertices){
+			v.x += dx;
 			v.y += dy;
 		}
 	}

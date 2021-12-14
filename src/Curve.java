@@ -52,7 +52,7 @@ public abstract class Curve{
 
 	public abstract void draw(Graphics g);
 
-	public abstract void displaceY(int dy);
+	public abstract void move(int dx, int dy);
 
 	public abstract void reset();
 }

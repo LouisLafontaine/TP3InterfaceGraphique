@@ -213,6 +213,7 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		numInput_textField.setText(null);
 		curvePlotWindow.curvePlotPanel.selectCurve(curveArray[input-1]);
 		if(!curvePlotWindow.isVisible()) {
+			curvePlotWindow.elapsedTime = 0;
 			curvePlotWindow.setVisible(true);
 		}
 	}

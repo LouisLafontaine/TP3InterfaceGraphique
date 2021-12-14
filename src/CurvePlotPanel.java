@@ -20,6 +20,7 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
         lastClick = new Point(0,0);
 
         background = (BufferedImage) importImage("Backgrounds/classicBackground.png");
+
         setFocusable(true);
         addKeyListener(this);
         addMouseListener(this);
@@ -27,7 +28,7 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
 
     public void actionPerformed(ActionEvent e) {
         if(curve!=null){
-            curve.displaceY(2);
+            curve.move(0,2);
             repaint();
         }
     }
@@ -94,7 +95,9 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
         lastClick.y = e.getY();
         curve.color = Color.red;
 
-        curve.displaceY((int)(lastClick.y - curve.barycenter().y));
+        int dx = (int)(lastClick.x - curve.barycenter().x);
+        int dy = (int)(lastClick.y - curve.barycenter().y);
+        curve.move(dx,dy);
 
     }
     public void mouseReleased(MouseEvent e) {

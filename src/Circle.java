@@ -81,7 +81,8 @@ public class Circle extends Curve {
     	g.fillOval((int)center.x, (int)center.y, this.radius, this.radius);
 	}
 
-	public void displaceY(int dy) {
+	public void move(int dx, int dy) {
+    	this.center.x += dx;
 		this.center.y += dy;
 	}
 
