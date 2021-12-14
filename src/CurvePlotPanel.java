@@ -10,16 +10,14 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
     private final BufferedImage background;
     private int bckgrdx = 1;
     private Curve curve;
-    private int lastClickX;
-    private int lastClickY;
+    private final Point lastClick;
     Timer timer;
 
     public CurvePlotPanel(){
         timer = new Timer(41,this);
         timer.start();
 
-        lastClickX = 0;
-        lastClickY = 0;
+        lastClick = new Point(0,0);
 
         background = (BufferedImage) importImage("Backgrounds/classicBackground.png");
         setFocusable(true);
@@ -92,11 +90,11 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
     public void mouseClicked(MouseEvent e) {
     }
     public void mousePressed(MouseEvent e) {
-        lastClickX = e.getX();
-        lastClickY = e.getY();
+        lastClick.x = e.getX();
+        lastClick.y = e.getY();
         curve.color = Color.red;
 
-        curve.displaceY(lastClickY - (int)(curve.barycenter().y));
+        curve.displaceY((int)(lastClick.y - curve.barycenter().y));
 
     }
     public void mouseReleased(MouseEvent e) {
@@ -110,9 +108,9 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
     // Getters
 
     public int getLastClickX(){
-        return lastClickX;
+        return (int)lastClick.x;
     }
     public int getLastClickY(){
-        return lastClickY;
+        return (int)lastClick.y;
     }
 }
