@@ -38,6 +38,7 @@ public class Circle extends Curve {
 		iniCenter = new Point(c.x, c.y);
 		center = new Point(c.x,c.y);
 		radius = r;
+		minDistance  = r; // temporary collision
 	}
 	
 	/** 

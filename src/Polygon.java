@@ -16,7 +16,6 @@ public class Polygon extends Curve {
 	// Les attributs
 	private final Point[] iniVertices;
 	private final Point[] vertices;
-	private final double minDistance;
 
 	/**
 	 * Le constructeur
@@ -43,7 +42,7 @@ public class Polygon extends Curve {
 			}
 			previousPoint = point;
 		}
-		minDistance = minD;
+		minDistance = minD; // temporary collision
 	}
 	
 	/**
@@ -146,6 +145,10 @@ public class Polygon extends Curve {
 			yPoints[i] = (int) vertices[i].y;
 		}
 		g.fillPolygon(xPoints,yPoints,vertices.length);
+
+		// Draws the isTouching circle for collision detection
+//		g.setColor(Color.blue);
+//		g.drawArc((int)barycenter().x-(int)minDistance, (int)barycenter().y - (int)minDistance, 2*(int)minDistance, 2*(int)minDistance,0,360);
 	}
 
 	@Override

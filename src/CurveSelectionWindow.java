@@ -34,9 +34,6 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 
 		curvePlotWindow = new CurvePlotWindow();
 
-		// Music
-		this.music = new Sound("Sounds/pokemon.wav");
-		music.clip.loop(Clip.LOOP_CONTINUOUSLY);
 
 		//--------------------------------------------------------------------------------------------------------------
 		// Top panel
@@ -64,6 +61,10 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		volume_button.setBounds(25,65,1.5);
 		volume_button.addActionListener(this);
 		topPanel.add(volume_button);
+
+		// Music
+		this.music = new Sound("Sounds/pokemon.wav");
+//		music.clip.loop(Clip.LOOP_CONTINUOUSLY);
 
 		//--------------------------------------------------------------------------------------------------------------
 		// Bottom panel
@@ -119,7 +120,7 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 	}
 
 	//==================================================================================================================
-	// Interaction
+	// Action Performed
 	//==================================================================================================================
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == display_button){

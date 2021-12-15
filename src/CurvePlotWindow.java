@@ -22,6 +22,7 @@ public class CurvePlotWindow extends JFrame implements ActionListener {
         // Window
         setLocation(750,200);
         setSize(1000, 610);
+        setResizable(false);
         setAlwaysOnTop(true);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }

@@ -7,6 +7,7 @@ public abstract class Curve{
 	protected Color iniColor;
 	protected Color color;
 	protected final Color DEFAULT_COLOR = Color.black;
+	protected double minDistance; //temporary until better collision detection system
 
 
 	/**
@@ -16,6 +17,7 @@ public abstract class Curve{
 		// La couleur par défaut est défini comme une constante
 		iniColor = DEFAULT_COLOR;
 		color = DEFAULT_COLOR;
+		minDistance = 0; //temporary until better collision detection system
     }
     
     /**
@@ -25,6 +27,7 @@ public abstract class Curve{
     public Curve(Color aColor){
         iniColor = aColor;
     	color = aColor;
+    	minDistance = 0; //temporary until better collision detection system
     }
 	
 	/**

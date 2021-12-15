@@ -35,11 +35,15 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
     }
 
     //==================================================================================================================
-    // Interaction
+    // Action Performed
     //==================================================================================================================
     public void actionPerformed(ActionEvent e) {
         if(curve!=null && !clickedOnCurve){
-            curve.move(0,2);
+            curve.move(0,5);
+        }
+        int ground = 476;
+        if(curve!=null && curve.barycenter().y+curve.minDistance > ground){
+            curve.move(0, ground -(int)(curve.barycenter().y+curve.minDistance));
         }
         repaint();
     }
