@@ -42,7 +42,7 @@ public class CurvePlotPanel extends JPanel implements ActionListener, KeyListene
             curve.move(0,5);
         }
         int ground = 476;
-        if(curve!=null && curve.barycenter().y+curve.minDistance > ground){
+        if(curve!=null && curve.barycenter().y+curve.minDistance > ground){ // TODO calculate barycenter only once and then save it as an attribute
             curve.move(0, ground -(int)(curve.barycenter().y+curve.minDistance));
         }
         repaint();
