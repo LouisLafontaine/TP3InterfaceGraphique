@@ -135,7 +135,7 @@ public class CurveSelectionWindow extends JFrame implements ActionListener, Mous
 		if(e.getSource() == volume_button) {
 			if(volume_button.isPressed){
 				volume_button.setNotPressed();
-				music.clip.loop(Clip.LOOP_CONTINUOUSLY);
+				music.clip.loop(
 			} else{
 				volume_button.setPressed();
 				music.clip.stop();
